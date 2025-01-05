@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI提示词优化工具</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 提示词目录 -->
+    <div id="promptDirectory" class="prompt-directory">
+        <div class="directory-header">
+            <h2>提示词目录</h2>
+            <button id="createNewPrompt">创建新提示词</button>
+        </div>
+        <div id="promptList" class="prompt-list">
+            <!-- 提示词列表将在这里动态生成 -->
+        </div>
+    </div>
+
+    <!-- 初始模态框 -->
+    <div id="initialModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>创建新的AI提示词</h2>
+            <form id="promptForm">
+                <div class="form-group">
+                    <label for="promptName">提示词名称：</label>
+                    <input type="text" id="promptName" required placeholder="给这个提示词起个名字">
+                </div>
+                <div class="form-group">
+                    <label for="purpose">目的：</label>
+                    <input type="text" id="purpose" required>
+                </div>
+                <div class="form-group">
+                    <label for="tone">语气风格：</label>
+                    <select id="tone">
+                        <option value="professional">专业</option>
+                        <option value="casual">随意</option>
+                        <option value="friendly">友好</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="output">期望输出：</label>
+                    <textarea id="output" required></textarea>
+                </div>
+                <button type="submit">生成提示词</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 主对话界面 -->
+    <div id="chatInterface" class="hidden">
+        <div class="chat-container">
+            <!-- 左侧对话面板 -->
+            <div class="chat-panel">
+                <div class="chat-header">
+                    <button id="backToDirectory" class="back-button">返回目录</button>
+                    <h3 id="currentPromptName">当前提示词</h3>
+                </div>
+                <div id="chatHistory" class="chat-history"></div>
+                <div class="chat-input">
+                    <textarea id="userInput" placeholder="输入你的消息..."></textarea>
+                    <button id="sendMessage">发送</button>
+                    <button id="optimizePrompt">优化提示词</button>
+                </div>
+            </div>
+            <!-- 右侧提示词面板 -->
+            <div class="prompt-panel">
+                <h3>当前提示词</h3>
+                <div class="prompt-actions">
+                    <button id="copyPrompt">复制</button>
+                </div>
+                <div id="promptEditor" contenteditable="true" class="prompt-editor"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html> 
